@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class WordNoteFakeDAO {
@@ -15,6 +17,20 @@ public class WordNoteFakeDAO {
                 .timestamp(LocalDate.now())
                 .sentence(getGeneratedSentence())
                 .build();
+    }
+
+    public List<WordNote> getWordNotes(Integer times){
+        if(times == null){
+            return new ArrayList<>();
+        }
+        return new ArrayList<>() {{
+            for (int i = 0; i < times; i++) {
+                add(WordNote.builder()
+                        .timestamp(LocalDate.now())
+                        .sentence(getGeneratedSentence())
+                        .build());
+            }
+        }};
     }
 
     private String getGeneratedSentence() {

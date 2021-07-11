@@ -3,6 +3,8 @@ package com.example.task2.WordNote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WordNoteService {
 
@@ -15,5 +17,9 @@ public class WordNoteService {
 
     public WordNote getWordNote() {
         return wordNoteFakeDAO.getWordNote();
+    }
+
+    public List<WordNote> getWordNotes(Integer times) {
+        return wordNoteFakeDAO.getWordNotes(times);
     }
 }
